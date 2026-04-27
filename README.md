@@ -1,1 +1,0 @@
-# Atividades-Do-Wendel
