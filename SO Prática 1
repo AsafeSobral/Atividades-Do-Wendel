@@ -1,1 +1,29 @@
-#!/bin/bash
+#!bin/bash
+sudo groupadd TI
+sudo groupadd rh
+sudo groupadd admin
+sudo groupadd secretaria
+sudo groupadd estagiario
+for i in {1..20}; do sudo useradd -m -g TI "user_ti_$i"; done
+for i in {1..20}; do sudo useradd -m -g rh "user_rh_$i"; done
+for i in {1..20}; do sudo useradd -m -g admin "user_admin_$i"; done
+for i in {1..20}; do sudo useradd -m -g secretaria "user_sec_$i"; done
+for i in {1..20}; do sudo useradd -m -g estagiario "user_estag_$i"; done
+for i in {1..5}; do sudo usermod -aG estagiario "user_ti_$i"; done
+for i in {1..5}; do sudo usermod -aG estagiario "user_rh_$i"; done
+sudo mkdir -p /geral/{publico,TI,gerencia,RH,administrativo}
+sudo chmod 777 /geral/publico
+
+sudo chown :TI /geral/TI
+sudo chmod 750 /geral/TI
+
+sudo chown :rh /geral/RH
+sudo chmod 750 /geral/RH
+
+sudo chown :admin /geral/gerencia
+sudo chmod 750 /geral/gerencia
+
+sudo chown :secretaria /geral/administrativo
+sudo chmod 750 /geral/administrativo
+sudo useradd -m -G sudo administrador
+
